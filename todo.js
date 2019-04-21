@@ -7,11 +7,12 @@ class Model {
 let todoModel = new Model();
 
 //文字を表示する　　View機能
-function viewModel(todo_text) {
+function viewModel() {
   //HTMLに表示する機能
-  let inputDate = todo_text;
 
-  $(inputDate).text(todoModel.todoLists[0]);
+  $(".todo_text01").text(todoModel.todoLists[0]);
+  $(".todo_text02").text(todoModel.todoLists[1]);
+  $(".todo_text03").text(todoModel.todoLists[2]);
 
 }
 
@@ -26,7 +27,7 @@ $('.addbutton').click(function () {
     //Modelにinputされたデータを準備する
     todoModel.todoLists.push(input_value);
 
-    viewModel(".todo_text01");
+    viewModel();
 
 
   } else {
