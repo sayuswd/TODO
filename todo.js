@@ -10,10 +10,18 @@ let todoModel = new Model();
 function viewModel() {
   //HTMLに表示する機能
 
-  $(".todo_text01").text(todoModel.todoLists[0]);
-  $(".todo_text02").text(todoModel.todoLists[1]);
-  $(".todo_text03").text(todoModel.todoLists[2]);
+    $("#todo_text").html('<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text01"></p></label>');
+    $(".todo_text01").text(todoModel.todoLists[0]);
 
+  if (todoModel.todoLists.length > 1) {
+    $("#todo_text").append('<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>');
+    $(".todo_text02").text(todoModel.todoLists[1]);
+  } 
+  if (todoModel.todoLists.length > 2) {
+    $("#todo_text").append('<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text03"></p></label>');
+    $(".todo_text03").text(todoModel.todoLists[2]);
+
+  }
 }
 
 //登録ボタンが押されたら追加
@@ -24,14 +32,16 @@ $('.addbutton').click(function () {
   //もし、入力されていたら表示
   if (input_value != "") {
 
-    //Modelにinputされたデータを準備する
+    //Modelにinputされたデータを格納する
     todoModel.todoLists.push(input_value);
 
     viewModel();
-
-
-  } else {
-    return;
+  } 
+  
+  if (todoLists.length > 1) {
+    //Modelにinputされたデータを格納する
+    todoModel.todoLists[0].push(input_value);
+    viewModel();
   }
 
 });
