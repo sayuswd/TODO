@@ -6,21 +6,24 @@ class Model {
 }
 let todoModel = new Model();
 
+
 //文字を表示する　　View機能
 function viewModel() {
   //HTMLに表示する機能
-
-    $("#todo_text").html('<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text01"></p></label>');
+    
+    const htmlcode01 = '<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text01"></p></label>';
+    $("#todo_text").html(htmlcode01);
     $(".todo_text01").text(todoModel.todoLists[0]);
 
   if (todoModel.todoLists.length > 1) {
-    $("#todo_text").append('<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>');
+    const htmlcode02 = '<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>';
+    $("#todo_text").append(htmlcode02);
     $(".todo_text02").text(todoModel.todoLists[1]);
   } 
   if (todoModel.todoLists.length > 2) {
-    $("#todo_text").append('<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text03"></p></label>');
+    const htmlcode03 = '<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text03"></p></label>';
+    $("#todo_text").append(htmlcode03);
     $(".todo_text03").text(todoModel.todoLists[2]);
-
   }
 }
 
@@ -34,17 +37,35 @@ $('.addbutton').click(function () {
 
     //Modelにinputされたデータを格納する
     todoModel.todoLists.push(input_value);
-
     viewModel();
   } 
   
-  if (todoLists.length > 1) {
+  if (todoModel.todoLists.length > 2) {
     //Modelにinputされたデータを格納する
-    todoModel.todoLists[0].push(input_value);
+    todoModel.todoLists.push(input_value);
     viewModel();
   }
 
+  if (todoModel.todoLists.length > 3) {
+    //Modelにinputされたデータを格納する
+    todoModel.todoLists.push(input_value);
+    viewModel();
+  }
+
+
 });
+
+  //削除ボタンの作成
+
+  $(function(){
+    //let deleteclick = $("input[type='checkbox']:checked");
+
+    $('.deletebutton').click(function(){
+      $("#todo_text").remove();
+    });
+  });
+
+
 
 //文字が入力されたときに実行
 $('#textinput').keyup(function () {
