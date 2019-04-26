@@ -7,6 +7,7 @@ class Model {
 let todoModel = new Model();
 
 
+
 //文字を表示する　　View機能
 function viewModel() {
   //HTMLに表示する機能
@@ -34,7 +35,7 @@ $('.addbutton').click(function () {
   let input_value = $('#textinput').val();
 
   //もし、入力されていたら表示
-  if (todoModel.todoLists.length === 0) {
+  if (todoModel.todoLists.length === 0 && input_value !=="") {
 
     //Modelにinputされたデータを格納する
     todoModel.todoLists.push(input_value);
@@ -60,13 +61,17 @@ $('.addbutton').click(function () {
 
 //削除ボタンの作成
 
-$(function () {
+$(function dblClickbutton1 () {
 
-  $('.deletebutton').click(function () {
-
+  let classdbl = $("class:");
+  
+  classdbl.dblclick(function () {
+    if(!confirm('削除しますか？')){
+      return false;
+    }else{
     todoModel.todoLists.pop();
     viewModel();
-
+    }
   });
   
 });
