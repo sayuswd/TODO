@@ -16,6 +16,9 @@ function viewModel() {
     const htmlcode01 = '<label><input type="checkbox" name="check1" /><span class="checkbox-icon"></span><p class="todo_text01"></p></label>';
     $("#todo_text").html(htmlcode01);
     $(".todo_text01").text(todoModel.todoLists[0]);
+    //deletebuttonの実装０１
+    const deletebutton01 = '<input type="button" name="d_button01" value="Delete" class="d_button01"/>';
+    $(".deletebutton").html(deletebutton01);
   }
   if (todoModel.todoLists.length >= 2 && todoModel.todoLists.length === 2) {
     const htmlcode02 = '<label><input type="checkbox" name="check2"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>';
@@ -42,6 +45,7 @@ $('.addbutton').click(function () {
     viewModel();
     return;
   }
+
 
   if (todoModel.todoLists.length === 1) {
     //Modelにinputされたデータを格納する
