@@ -13,17 +13,17 @@ function viewModel() {
   //HTMLに表示する機能
 
   if (todoModel.todoLists.length >= 1 && todoModel.todoLists.length === 1) {
-    const htmlcode01 = '<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text01"></p></label>';
+    const htmlcode01 = '<label><input type="checkbox" name="check1" /><span class="checkbox-icon"></span><p class="todo_text01"></p></label>';
     $("#todo_text").html(htmlcode01);
     $(".todo_text01").text(todoModel.todoLists[0]);
   }
   if (todoModel.todoLists.length >= 2 && todoModel.todoLists.length === 2) {
-    const htmlcode02 = '<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>';
+    const htmlcode02 = '<label><input type="checkbox" name="check2"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>';
     $("#todo_text").append(htmlcode02);
     $(".todo_text02").text(todoModel.todoLists[1]);
   }
   if (todoModel.todoLists.length >= 3 && todoModel.todoLists.length === 3) {
-    const htmlcode03 = '<label><input type="checkbox"/><span class="checkbox-icon"></span><p class="todo_text03"></p></label>';
+    const htmlcode03 = '<label><input type="checkbox" name="check3"/><span class="checkbox-icon"></span><p class="todo_text03"></p></label>';
     $("#todo_text").append(htmlcode03);
     $(".todo_text03").text(todoModel.todoLists[2]);
   }
@@ -35,7 +35,7 @@ $('.addbutton').click(function () {
   let input_value = $('#textinput').val();
 
   //もし、入力されていたら表示
-  if (todoModel.todoLists.length === 0 && input_value !=="") {
+  if (todoModel.todoLists.length === 0 && input_value !== "") {
 
     //Modelにinputされたデータを格納する
     todoModel.todoLists.push(input_value);
@@ -43,7 +43,7 @@ $('.addbutton').click(function () {
     return;
   }
 
-  if ( todoModel.todoLists.length === 1) {
+  if (todoModel.todoLists.length === 1) {
     //Modelにinputされたデータを格納する
     todoModel.todoLists.push(input_value);
     viewModel();
@@ -56,24 +56,23 @@ $('.addbutton').click(function () {
     viewModel();
     return;
   }
-
+  
 });
 
 //削除ボタンの作成
 
-$(function dblClickbutton1 () {
+$(function dblClickbutton1() {
 
-  let classdbl = $("class:");
-  
-  classdbl.dblclick(function () {
-    if(!confirm('削除しますか？')){
+  $('input[name="check1"]').dblclick(function () {
+    if (!confirm('削除しますか？')) {
       return false;
-    }else{
-    todoModel.todoLists.pop();
-    viewModel();
+    } else {
+      todoModel.todoLists.pop();
+      viewModel();
     }
+
   });
-  
+
 });
 
 
