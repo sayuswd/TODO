@@ -16,19 +16,25 @@ function viewModel() {
     const htmlcode01 = '<label><input type="checkbox" name="check1" /><span class="checkbox-icon"></span><p class="todo_text01"></p></label>';
     $("#todo_text").html(htmlcode01);
     $(".todo_text01").text(todoModel.todoLists[0]);
-    //deletebuttonの実装０１
-    const deletebutton01 = '<input type="button" name="d_button01" value="Delete" class="d_button01"/>';
+    //deletebuttonの実装01
+    const deletebutton01 = '<input type="button" class="d_button01" value="Delete"/>';
     $(".deletebutton").html(deletebutton01);
   }
   if (todoModel.todoLists.length >= 2 && todoModel.todoLists.length === 2) {
-    const htmlcode02 = '<label><input type="checkbox" name="check2"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>';
+    const htmlcode02 = '<label><input type="checkbox" class="check2"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label>';
     $("#todo_text").append(htmlcode02);
     $(".todo_text02").text(todoModel.todoLists[1]);
+    //deletebuttonの実装02
+    const deletebutton02 = '<input type="button" class="d_button02" value="Delete"/>';
+    $(".deletebutton").append(deletebutton02);
   }
   if (todoModel.todoLists.length >= 3 && todoModel.todoLists.length === 3) {
     const htmlcode03 = '<label><input type="checkbox" name="check3"/><span class="checkbox-icon"></span><p class="todo_text03"></p></label>';
     $("#todo_text").append(htmlcode03);
     $(".todo_text03").text(todoModel.todoLists[2]);
+    //deletebuttonの実装０１
+    const deletebutton03 = '<input type="button" class="d_button03" value="Delete"/>';
+    $(".deletebutton").append(deletebutton03);
   }
 }
 
@@ -60,24 +66,22 @@ $('.addbutton').click(function () {
     viewModel();
     return;
   }
-  
+
 });
 
 //削除ボタンの作成
 
-$(function dblClickbutton1() {
-
-  $('input[name="check1"]').dblclick(function () {
+  $(document).on('click',".d_button01",function () {
     if (!confirm('削除しますか？')) {
       return false;
     } else {
-      todoModel.todoLists.pop();
+      todoModel.todoLists.splice(0,1); //1番目から1つ削除
       viewModel();
+      return;
     }
-
   });
 
-});
+
 
 
 
