@@ -10,32 +10,21 @@ let todoModel = new Model();
 //文字を表示する　　View機能
 function viewModel() {
   //HTMLに表示する機能
-
-  if (todoModel.todoLists.length >= 1 && todoModel.todoLists.length === 1) {
-    const htmlcode01 = '<div class="code01"><label><input type="checkbox" name="check1" /><span class="checkbox-icon"></span><p class="todo_text01"></p></label></div>';
-    $("#todo_text").html(htmlcode01);
-    $(".todo_text01").text(todoModel.todoLists[0]);
-    //deletebuttonの実装01
-    const deletebutton01 = '<div class="delete_button01"><input type="button" class="d_button01" value="Delete"/></div>';
-    $(".deletebutton").html(deletebutton01);
-  }
-  if (todoModel.todoLists.length >= 2 && todoModel.todoLists.length === 2) {
-    const htmlcode02 = '<div class="code02"><label><input type="checkbox" class="check2"/><span class="checkbox-icon"></span><p class="todo_text02"></p></label></div>';
-    $("#todo_text").append(htmlcode02);
-    $(".todo_text02").text(todoModel.todoLists[1]);
-    //deletebuttonの実装02
-    const deletebutton02 = '<div class="delete_button02"><input type="button" class="d_button02" value="Delete"/></div>';
-    $(".deletebutton").append(deletebutton02);
-  }
-  if (todoModel.todoLists.length >= 3 && todoModel.todoLists.length === 3) {
-    const htmlcode03 = '<div class="code03"><label><input type="checkbox" name="check3"/><span class="checkbox-icon"></span><p class="todo_text03"></p></label></div>';
-    $("#todo_text").append(htmlcode03);
-    $(".todo_text03").text(todoModel.todoLists[2]);
-    //deletebuttonの実装０１
-    const deletebutton03 = '<div class="delete_button03"><input type="button" class="d_button03" value="Delete"/></div>';
-    $(".deletebutton").append(deletebutton03);
+  
+  //inputの値を調べる
+  let inputaddvalue =todoModel.todoLists.length;
+  //要素の数ループ
+  for (let i = 1 ; i===inputaddvalue; i++) {
+    //要素のテキストを格納
+    //let codeform = $(todoModel.todoLists).eq(i);
+    if (todoModel.todoLists.length >= i && todoModel.todoLists.length === i) {
+    const htmlcode = '<div class="code"><label><input type="checkbox" name="check'+ i+'" /><span class="checkbox-icon"></span><p class="todo_text'+ i+'"></p></label></div>';
+    $(".todo_section").append(htmlcode);
+    $(".todo_section").text(todoModel.todoLists[i]);
+    }
   }
 }
+
 
 //表示した文字を削除する　　View機能
 function resetviewModel() {
@@ -91,7 +80,7 @@ $('.addbutton').click(function () {
 });
 
 //Model部分のデータの削除
-$('.deletebutton').on('click', ".d_button01", function () {
+$('.todo_section').on('click', ".d_button01", function () {
   //削除ボタンの作成 01
   if (!confirm('削除しますか？')) {
     return false;
@@ -101,7 +90,7 @@ $('.deletebutton').on('click', ".d_button01", function () {
     return;
   }
 });
-$('.deletebutton').on('click', ".d_button02", function () {
+$('.todo_section').on('click', ".d_button02", function () {
   //削除ボタンの作成 02
   if (!confirm('削除しますか？')) {
     return false;
@@ -111,7 +100,7 @@ $('.deletebutton').on('click', ".d_button02", function () {
     return;
   }
 });
-$('.deletebutton').on('click', ".d_button03", function () {
+$('.todo_section').on('click', ".d_button03", function () {
   //削除ボタンの作成 03
   if (!confirm('削除しますか？')) {
     return false;

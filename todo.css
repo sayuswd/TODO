@@ -57,11 +57,11 @@ body {
   border-radius: 10px;
 }
 
-.todo_section .deletebutton {
+.todo_section .delete_button01 {
   text-align: right;
 }
 
-.todo_section .deletebutton input {
+.todo_section .delete_button01 input {
   position: relative;
   width: 60px;
   height: 20px;
@@ -75,6 +75,50 @@ body {
   color: rgb(225, 228, 225);
 }
 
-.todo_section .deletebutton input:hover {
+.todo_section .delete_button01 .d_button input:hover {
+  background-color: rgb(253, 182, 182);
+}
+
+.todo_section .delete_button02 {
+  text-align: right;
+}
+
+.todo_section .delete_button02 input {
+  position: relative;
+  width: 60px;
+  height: 20px;
+  font-size: 5px;
+  overflow: hidden;
+  background-color: rgb(250, 87, 87);
+  text-align: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: .4s;
+  color: rgb(225, 228, 225);
+}
+
+.todo_section .delete_button02 .d_button input:hover {
+  background-color: rgb(253, 182, 182);
+}
+
+.todo_section .delete_button03 {
+  text-align: right;
+}
+
+.todo_section .delete_button03 input {
+  position: relative;
+  width: 60px;
+  height: 20px;
+  font-size: 5px;
+  overflow: hidden;
+  background-color: rgb(250, 87, 87);
+  text-align: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: .4s;
+  color: rgb(225, 228, 225);
+}
+
+.todo_section .delete_button03 .d_button input:hover {
   background-color: rgb(253, 182, 182);
 }
