@@ -14,20 +14,20 @@ function viewModel() {
   //inputの値を調べる
   let inputaddvalue = todoModel.todoLists.length;
   //要素の数ループ
-  for (let i = 0; i <= inputaddvalue; i++) {
+  for (let i = 0; i < inputaddvalue; i++) {
     //要素のテキストを格納
     //let codeform = todoModel.todoLists).eq(i);
-    if (todoModel.todoLists.length >= i) {
-      const htmlcode = '<div class="code"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p class="todo_text' + i + '"></p></label></div>';
-      let p_code = '.todo_text';
-      p_code += i;
 
-      $(".todo_section").append(htmlcode);
-      $(p_code).text(todoModel.todoLists[i]);
-      return;
-    }
+    const htmlcode = '<div class="code"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p class="todo_text' + i + '"></p></label></div>';
+    let p_code = '.todo_text';
+    p_code += i;
+
+    $(".todo_section").append(htmlcode);
+    $(p_code).text(todoModel.todoLists[i]);
+    return;
   }
 }
+
 
 
 //表示した文字を削除する　　View機能
