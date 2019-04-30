@@ -10,17 +10,21 @@ let todoModel = new Model();
 //文字を表示する　　View機能
 function viewModel() {
   //HTMLに表示する機能
-  
+
   //inputの値を調べる
-  let inputaddvalue =todoModel.todoLists.length;
+  let inputaddvalue = todoModel.todoLists.length;
   //要素の数ループ
-  for (let i = 1 ; i===inputaddvalue; i++) {
+  for (let i = 0; i <= inputaddvalue; i++) {
     //要素のテキストを格納
-    //let codeform = $(todoModel.todoLists).eq(i);
-    if (todoModel.todoLists.length >= i && todoModel.todoLists.length === i) {
-    const htmlcode = '<div class="code"><label><input type="checkbox" name="check'+ i+'" /><span class="checkbox-icon"></span><p class="todo_text'+ i+'"></p></label></div>';
-    $(".todo_section").append(htmlcode);
-    $(".todo_section").text(todoModel.todoLists[i]);
+    //let codeform = todoModel.todoLists).eq(i);
+    if (todoModel.todoLists.length >= i) {
+      const htmlcode = '<div class="code"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p class="todo_text' + i + '"></p></label></div>';
+      let p_code = '.todo_text';
+      p_code += i;
+
+      $(".todo_section").append(htmlcode);
+      $(p_code).text(todoModel.todoLists[i]);
+      return;
     }
   }
 }
@@ -29,24 +33,24 @@ function viewModel() {
 //表示した文字を削除する　　View機能
 function resetviewModel() {
   //deleteを押した時の表示機能
-    if ('input[class="d_button01"]:checked') {
-      $(".code01").empty();
-      $(".delete_button01").empty();
-    }else{
-      return;
-    }
-    if ('input[class="d_button02"]:checked') {
-      $(".code02").empty();
-      $(".delete_button02").empty();
-    }else{
-      return;
-    }
-    if ('input[class="d_button02"]:checked') {
-      $(".code03").empty();
-      $(".delete_button03").empty();
-    }else{
-      return;
-    }
+  if ('input[class="d_button01"]:checked') {
+    $(".code01").empty();
+    $(".delete_button01").empty();
+  } else {
+    return;
+  }
+  if ('input[class="d_button02"]:checked') {
+    $(".code02").empty();
+    $(".delete_button02").empty();
+  } else {
+    return;
+  }
+  if ('input[class="d_button02"]:checked') {
+    $(".code03").empty();
+    $(".delete_button03").empty();
+  } else {
+    return;
+  }
 }
 
 //登録ボタンが押されたら追加
