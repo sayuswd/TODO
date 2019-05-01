@@ -14,17 +14,34 @@ function viewModel() {
   //inputの値を調べる
   let inputaddvalue = todoModel.todoLists.length;
   //要素の数ループ
+
+
+
   for (let i = 0; i < inputaddvalue; i++) {
     //要素のテキストを格納
-    //let codeform = todoModel.todoLists).eq(i);
 
-    const htmlcode = '<div class="code"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p class="todo_text' + i + '"></p></label></div>';
-    let p_code = '.todo_text';
-    p_code += i;
+    if (todoModel.todoLists[i] == "") {
+    //値が入っているclassを量産しないための調整
 
-    $(".todo_section").append(htmlcode);
-    $(p_code).text(todoModel.todoLists[i]);
-    return;
+      let p_code = 'todo_text';
+      let p_codeplas = 'todo_text';
+      p_codeplas = '#' + p_code + i;
+      p_code += i;
+
+
+      const htmlcode = '<div class="code"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p id="' + p_code + '"></p></label></div>';
+
+      $(".todo_section").append(htmlcode);
+      $(p_codeplas).text(todoModel.todoLists[i]);
+
+
+      let d_code = 'd_button';
+      d_code += i;
+
+      const deletebutton = '<div class="delete_button' + i + '"><input type="button" class="' + d_code + '" value="Delete"/></div>';
+      $(".todo_section").append(deletebutton);
+
+    }
   }
 }
 
