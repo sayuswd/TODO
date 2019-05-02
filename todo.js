@@ -6,6 +6,7 @@ class Model {
 }
 let todoModel = new Model();
 
+let i = 0;
 
 //文字を表示する　　View機能
 function viewModel() {
@@ -17,7 +18,7 @@ function viewModel() {
 
   $(".todo_section").html("");
 
-  for (let i = 0; i < inputaddvalue; i++) {
+  for (i ; i < inputaddvalue; i++) {
     //要素のテキストを格納
 
     if (todoModel.todoLists[i] != "") {
@@ -29,7 +30,7 @@ function viewModel() {
       p_code += i;
 
 
-      const htmlcode = '<div class="code"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p id="' + p_code + '"></p></label></div>';
+      const htmlcode = '<div class="code' + i + '"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p id="' + p_code + '"></p></label></div>';
 
       $(".todo_section").append(htmlcode);
       $(p_codeplas).text(todoModel.todoLists[i]);
@@ -51,8 +52,8 @@ function viewModel() {
 function resetviewModel() {
   //deleteを押した時の表示機能
   if (true) {
-    $(htmlcode).empty();
-    $(deletebutton).empty();
+    $("code' + i + '").empty();
+    $("delete_button' + i + '").empty();
   } else {
     return;
   }
@@ -75,12 +76,12 @@ $('.addbutton').click(function () {
 });
 
 //Model部分のデータの削除
-$('.todo_section').on('click', deletebutton, function () {
+$('.todo_section').on('click',"delete_button' + i + '", function () {
   //削除ボタンの作成 
   if (!confirm('削除しますか？')) {
     return false;
   } else {
-    todoModel.todoLists == []; //1番目から1つ削除
+    todoModel.todoLists == []; //削除
     resetviewModel();
     return;
   }
