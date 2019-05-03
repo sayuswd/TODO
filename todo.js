@@ -2,10 +2,10 @@
 class Model {
   constructor() {
     this.todoLists = [];
+    this.checkLists = [];
   }
 }
 let todoModel = new Model();
-
 
 
 //文字を表示する　　View機能
@@ -35,6 +35,7 @@ function viewModel() {
       $(".todo_section").append(htmlcode);
       $(p_codeplas).text(todoModel.todoLists[i]);
 
+      $("#textinput").val("");
 
       let d_code = 'd_button';
       d_code += i;
@@ -46,7 +47,7 @@ function viewModel() {
 
       //Model部分のデータの削除
       //$('.todo_section').on('click', ".d_button" + i, function () {
-        $(".d_button" + i).click(function () {
+      $(".d_button" + i).click(function () {
         //削除ボタンの作成 
         if (!confirm('削除しますか？')) {
           return false;
@@ -56,6 +57,9 @@ function viewModel() {
           return;
         }
       });
+
+      checkedIcon();
+
     }
   }
 }
@@ -64,14 +68,31 @@ function viewModel() {
 $('.addbutton').click(function () {
   //入力した文字を取得
   let input_value = $('#textinput').val();
-
+  
   //もし、入力されていたら表示
   if (input_value !== "") {
 
     //Modelにinputされたデータを格納する
     todoModel.todoLists.push(input_value);
     viewModel();
-    return;
   }
 
 });
+
+function checkedIcon() {
+
+  //チェックボタンの値の追加
+
+  let checked_icon = $(".code" + i).prop("checked");
+  if (checked_icon = true) {
+
+    let checkedvalue = todoModel.checkLists.length;
+
+    for (c = 0; c < checkedvalue; c++) {
+      todoModel.checkLists.push(checked_icon);
+
+      viewModel();
+    
+    }
+  }
+}
