@@ -1,11 +1,18 @@
 //データを取得する　Model機能
-class Model {
+class todoModel {
   constructor() {
     this.todoLists = [];
     this.checkLists = [];
   }
 }
-let todoModel = new Model();
+let todoModel = new todoModel();
+
+class checkModel {
+  constructor() {
+    this.checkLists = [];
+  }
+}
+let checkModel = new checkModel();
 
 
 //文字を表示する　　View機能
@@ -46,7 +53,7 @@ function viewModel() {
       let delete_ind = i;
 
       //Model部分のデータの削除
-      //$('.todo_section').on('click', ".d_button" + i, function () {
+
       $(".d_button" + i).click(function () {
         //削除ボタンの作成 
         if (!confirm('削除しますか？')) {
@@ -68,7 +75,7 @@ function viewModel() {
 $('.addbutton').click(function () {
   //入力した文字を取得
   let input_value = $('#textinput').val();
-  
+
   //もし、入力されていたら表示
   if (input_value !== "") {
 
@@ -79,20 +86,27 @@ $('.addbutton').click(function () {
 
 });
 
+let checkaddvalue = checkModel.checkModel.length;
+
 function checkedIcon() {
 
+  //.inputの値の取得
   //チェックボタンの値の追加
+  let namecheck = 'input[name="check' + i + '"]';
+  let namecheked = 'input[name="check' + i + '"]:checked';
 
-  let checked_icon = $(".code" + i).prop("checked");
-  if (checked_icon = true) {
+  $(namecheck).click(function () {
+    //値が入っていないinputか調べる
+    if (namecheked == true) {
+      for (let b = 0; b < namecheck; b++) {
 
-    let checkedvalue = todoModel.checkLists.length;
+        //要素のテキストを格納
+        checkaddvalue = namecheked.val();
+        //値が入っていないinputか調べる
 
-    for (c = 0; c < checkedvalue; c++) {
-      todoModel.checkLists.push(checked_icon);
-
-      viewModel();
-    
+        let checkedvalue = namecheck.prop('checked');
+        alert(checkedvalue);
+      }
     }
-  }
+  });
 }
