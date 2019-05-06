@@ -1,18 +1,11 @@
 //データを取得する　Model機能
-class todoModel {
+class Model {
   constructor() {
     this.todoLists = [];
     this.checkLists = [];
   }
 }
-let todoModel = new todoModel();
-
-class checkModel {
-  constructor() {
-    this.checkLists = [];
-  }
-}
-let checkModel = new checkModel();
+let todoModel = new Model();
 
 
 //文字を表示する　　View機能
@@ -31,29 +24,20 @@ function viewModel() {
     if (todoModel.todoLists[i] != "") {
       //値が入っているclassを量産しないための調整
 
-      let p_code = 'todo_text';
-      let p_codeplas = 'todo_text';
-      p_codeplas = '#' + p_code + i;
-      p_code += i;
-
-
-      const htmlcode = '<div class="code' + i + '"><label><input type="checkbox" name="check' + i + '" /><span class="checkbox-icon"></span><p id="' + p_code + '"></p></label></div>';
-
-      $(".todo_section").append(htmlcode);
-      $(p_codeplas).text(todoModel.todoLists[i]);
-
-      $("#textinput").val("");
-
       let d_code = 'd_button';
       d_code += i;
 
-      const deletebutton = '<div class="delete_button' + i + '"><input type="button" class="' + d_code + '" value="Delete"/></div>';
-      $(".todo_section").append(deletebutton);
+      const deletebutton = '<input type="button" class="' + d_code + '" value="Delete"/></div>';
+      const htmlcode = '<div><input type="checkbox" class="set" name="check' + i + '" />' + todoModel.todoLists[i] + deletebutton;
+
+      $(".todo_section").append(htmlcode);
+
+      $("#textinput").val("");
+
 
       let delete_ind = i;
 
       //Model部分のデータの削除
-
       $(".d_button" + i).click(function () {
         //削除ボタンの作成 
         if (!confirm('削除しますか？')) {
@@ -86,27 +70,30 @@ $('.addbutton').click(function () {
 
 });
 
-let checkaddvalue = checkModel.checkModel.length;
+
 
 function checkedIcon() {
 
-  //.inputの値の取得
-  //チェックボタンの値の追加
+  let check_ind = i;
   let namecheck = 'input[name="check' + i + '"]';
-  let namecheked = 'input[name="check' + i + '"]:checked';
+  todoModel.checkLists.push(check_ind);
 
-  $(namecheck).click(function () {
-    //値が入っていないinputか調べる
-    if (namecheked == true) {
-      for (let b = 0; b < namecheck; b++) {
+  for (let b = 0; b < todoModel.checkLists.length; b++) {
+    //checkListsにinputのデータを格納する
+    // if (todoModel.checkLists.length == i ) {
 
-        //要素のテキストを格納
-        checkaddvalue = namecheked.val();
-        //値が入っていないinputか調べる
+    $(namecheck).click(function () {
+      //.inputの値の取得
+      //チェックボタンの値の追加
 
-        let checkedvalue = namecheck.prop('checked');
-        alert(checkedvalue);
+      //チェックされたinputか調べる
+      if ($(namecheck).prop('checked')) {
+        namecheck.prop()
+          (namecheck).prop('checked', true);
+        viewModel();
       }
-    }
-  });
+
+    });
+  }
+  //}
 }
