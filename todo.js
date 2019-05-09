@@ -78,6 +78,13 @@ $('.addbutton').click(function () {
   }
 });
 
+//エンターキーの設定
+$('#textinput').keypress(function(e) {
+  if(e.which == 13) {
+    $('.addbutton').click();
+  }
+});
+
 
 //チェックボタンの値の取得
 function checkedIcon() {
@@ -94,17 +101,15 @@ function checkedIcon() {
     let inputcheckedvalue = todoModel.checkLists.length;
 
     //もしチェックされていたらチェックされた値を表示する
-    if ($(namecheck).prop('checked', true)) {
 
-      //格納された値を1つずつ取り出す。
-      for (let b = 0; b < inputcheckedvalue; b++) {
+    //格納された値を1つずつ取り出す。
+    for (let b = 0; b < inputcheckedvalue; b++) {
+      if ($(namecheck).prop('checked', true)) {
 
         //チェックされたものの値が入っていたら。
+        $('input[name="check' + i + '"]:checked').eq(todoModel.checkLists[b]).val;
 
-          $(namecheck).val(todoModel.checkLists[b]);
-          viewModel();
-
+      }
     }
-  }
   });
 }
