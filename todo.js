@@ -18,7 +18,7 @@ function viewModel() {
 
   $(".todo_section").html("");
 
-  for (i = 0; i < inputaddvalue; i++) {
+  for (let i = 0; i < inputaddvalue; i++) {
     //要素のテキストを格納
 
     if (todoModel.todoLists[i] != "") {
@@ -35,10 +35,10 @@ function viewModel() {
       $("#textinput").val("");
 
       //Deleteボタン
-      deleteButtonSet();
+      deleteButtonSet(i);
 
       //チェックボタンの値の取得
-      checkedIcon();
+      checkedIcon(i);
 
     }
 
@@ -47,19 +47,22 @@ function viewModel() {
 
 
 //Deleteボタン
-function deleteButtonSet() {
-  let delete_ind = i;
+function deleteButtonSet(deletebuttonnum) {
+  const delete_ind = deletebuttonnum;
 
   //Model部分のデータの削除
-  $(".d_button" + i).click(function () {
+  $(".d_button" + delete_ind).click(function () {
     //削除ボタンの作成 
     if (!confirm('削除しますか？')) {
       return false;
     } else {
       todoModel.todoLists.splice(delete_ind, 1);
+      todoModel.checkLists.splice(delete_ind, 1);
+
       viewModel();
       return;
     }
+
   });
 }
 
@@ -68,48 +71,51 @@ function deleteButtonSet() {
 $('.addbutton').click(function () {
   //入力した文字を取得
   let input_value = $('#textinput').val();
+  let input_checked = $('input[name="check' + i + '"]:checked').val();
 
   //もし、入力されていたら表示
   if (input_value !== "") {
 
     //Modelにinputされたデータを格納する
     todoModel.todoLists.push(input_value);
+    todoModel.checkLists.push(input_checked);
     viewModel();
   }
+
 });
 
 //エンターキーの設定
-$('#textinput').keypress(function(e) {
-  if(e.which == 13) {
+$('#textinput').keypress(function (e) {
+  if (e.which == 13) {
     $('.addbutton').click();
   }
 });
 
 
 //チェックボタンの値の取得
-function checkedIcon() {
+function checkedIcon(checkednumber) {
 
-  let namecheck = 'input[name="check' + i + '"]';
-  let check_ind = i;
+  let check_ind = 'input[name="check' + checkednumber + '"]';
 
-  $(namecheck).click(function () {
-
-    //チェックされたinputデータを格納する
-    todoModel.checkLists.push(check_ind);
-
-    //データの個数の確認
-    let inputcheckedvalue = todoModel.checkLists.length;
+  $(check_ind).click(function () {
 
     //もしチェックされていたらチェックされた値を表示する
+    if ($(check_ind).prop('checked', true)) {
 
-    //格納された値を1つずつ取り出す。
-    for (let b = 0; b < inputcheckedvalue; b++) {
-      if ($(namecheck).prop('checked', true)) {
+      //Modelにinputされたデータを取得する
+      let Checklistvalue = todoModel.checkLists.prop('checked');
 
-        //チェックされたものの値が入っていたら。
-        $('input[name="check' + i + '"]:checked').eq(todoModel.checkLists[b]).val;
+      //データの個数の確認
+      $(Checklistvalue).each(function (number) {
 
-      }
+        if (number == true) {
+          $('input[name="check' + checkednumber + '"]').prop('checked', false);
+        } else {
+          $('input[name="check' + checkednumber + '"]').prop('checked', true);
+        }
+
+      });
     }
   });
 }
+
