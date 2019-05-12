@@ -32,6 +32,13 @@ function viewModel() {
 
       $(".todo_section").append(htmlcode);
 
+
+      if (todoModel.checkLists[i] == true) {
+        $('input[name="check' + i + '"]').prop("checked", true);
+      } else if (todoModel.checkLists[i] == false) {
+        $('input[name="check' + i + '"]').prop("checked", false);
+      }
+
       $("#textinput").val("");
 
       //Deleteボタン
@@ -90,43 +97,21 @@ $('#textinput').keypress(function (e) {
   }
 });
 
+
 //チェックボタンの値の取得
 function checkedIcon(checkednumber) {
 
   let check_ind = 'input[name="check' + checkednumber + '"]';
 
+
+
   $(check_ind).click(function () {
-
     //もしチェックされていたらチェックされた値を表示する
-    if ($(check_ind).prop('checked', true)) {
+    if ($(check_ind).prop('checked')) {
       todoModel.checkLists[checkednumber] = true;
+    } else {
+      todoModel.checkLists[checkednumber] = false;
     }
-
-    if (todoModel.checkLists == true) {
-      $('input[name="check' + checkednumber + '"]').prop('checked', true);
-      viewModel();
-    }
-
-
+    viewModel();
   });
 }
-/*
-//データの個数の確認
-      $(checkvalue).each(function () {
-
-        if ('input[name="check' + checkednumber + '"]:checled') {
-          viewModel()
-        }
-  for (let detaset = 0; detaset < todoModel.todoLists.length; detaset++) {
-        for (let detaset = 0; detaset < checkvalue ; detaset++) {
-        if (checkvalue[detaset] == false) {
-          todoModel.checkLists.push(true);
-          return;
-        }
-        viewModel();
-
-      });
-$('input[name="check' + checkednumber + '"]').prop('checked', false);
-} else {
-  $('input[name="check' + checkednumber + '"]').prop('checked', true);
-}*/
