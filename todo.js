@@ -40,6 +40,7 @@ function viewModel() {
       //チェックボタンの値の取得
       checkedIcon(i);
 
+
     }
 
   }
@@ -98,21 +99,34 @@ function checkedIcon(checkednumber) {
 
     //もしチェックされていたらチェックされた値を表示する
     if ($(check_ind).prop('checked', true)) {
-
-      //Modelにinputされたデータを取得する
-      let Checklistvalue = todoModel.checkLists.prop('checked');
-
-      //データの個数の確認
-      $(Checklistvalue).each(function (number) {
-
-        if (number == true) {
-          $('input[name="check' + checkednumber + '"]').prop('checked', false);
-        } else {
-          $('input[name="check' + checkednumber + '"]').prop('checked', true);
-        }
-
-      });
+      todoModel.checkLists[checkednumber] = true;
     }
+
+    if (todoModel.checkLists == true) {
+      $('input[name="check' + checkednumber + '"]').prop('checked', true);
+      viewModel();
+    }
+
+
   });
 }
+/*
+//データの個数の確認
+      $(checkvalue).each(function () {
 
+        if ('input[name="check' + checkednumber + '"]:checled') {
+          viewModel()
+        }
+  for (let detaset = 0; detaset < todoModel.todoLists.length; detaset++) {
+        for (let detaset = 0; detaset < checkvalue ; detaset++) {
+        if (checkvalue[detaset] == false) {
+          todoModel.checkLists.push(true);
+          return;
+        }
+        viewModel();
+
+      });
+$('input[name="check' + checkednumber + '"]').prop('checked', false);
+} else {
+  $('input[name="check' + checkednumber + '"]').prop('checked', true);
+}*/
