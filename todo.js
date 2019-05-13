@@ -1,4 +1,4 @@
-//データを取得する　Model機能
+//データの保持　Model機能　配列で格納
 class Model {
   constructor() {
     this.todoLists = [];
@@ -8,43 +8,43 @@ class Model {
 let todoModel = new Model();
 
 
-//文字を表示する　　View機能
+//表示機能　View機能
 function viewModel() {
-  //HTMLに表示する機能
 
-  //inputの値を調べる
+  //配列の要素数を取得
   let inputaddvalue = todoModel.todoLists.length;
-  //要素の数ループ
 
-  $(".todo_section").html("");
+  $(".inputlist_set").html("");
 
+  //格納した複数の要素の抜き出し
   for (let i = 0; i < inputaddvalue; i++) {
-    //要素のテキストを格納
-
+    
+    //classの調整部分
     if (todoModel.todoLists[i] != "") {
-      //値が入っているclassを量産しないための調整
 
-      let d_code = 'd_button';
-      d_code += i;
+      let delete_code = 'd_button';
+      delete_code += i;
+    //Htmlの表示部分の設定
+      const deletebutton = '<input type="button" class="' + delete_code + '" value="Delete"/></div>';
+      const htmlset = '<div class="allset"><input type="checkbox" class="set" name="check' + i + '" />' + todoModel.todoLists[i] + deletebutton;
 
-      const deletebutton = '<input type="button" class="' + d_code + '" value="Delete"/></div>';
-      const htmlcode = '<div class="allset"><input type="checkbox" class="set" name="check' + i + '" />' + todoModel.todoLists[i] + deletebutton;
+      //表示するためにappendでHTMLを取得する
+      $(".inputlist_set").append(htmlset);
 
-      $(".todo_section").append(htmlcode);
-
-
+      //inputのチェックボックスの表示設定
       if (todoModel.checkLists[i] == true) {
         $('input[name="check' + i + '"]').prop("checked", true);
       } else if (todoModel.checkLists[i] == false) {
         $('input[name="check' + i + '"]').prop("checked", false);
       }
 
+      //input type="text"のリセット
       $("#textinput").val("");
 
-      //Deleteボタン
+      //Deleteボタンの設定へ
       deleteButtonSet(i);
 
-      //チェックボタンの値の取得
+      //チェックボタンの設定へ
       checkedIcon(i);
 
 
@@ -54,13 +54,13 @@ function viewModel() {
 }
 
 
-//Deleteボタン
+//Deleteボタンの設定
 function deleteButtonSet(deletebuttonnum) {
   const delete_ind = deletebuttonnum;
 
   //Model部分のデータの削除
   $(".d_button" + delete_ind).click(function () {
-    //削除ボタンの作成 
+    //削除する場合上のiの値と連動
     if (!confirm('削除しますか？')) {
       return false;
     } else {
@@ -83,7 +83,9 @@ $('.addbutton').click(function () {
   if (input_value !== "") {
 
     //Modelにinputされたデータを格納する
+    //input type="text"で入力された値
     todoModel.todoLists.push(input_value);
+    //falseを仮で取得
     todoModel.checkLists.push(false);
     viewModel();
   }
@@ -106,7 +108,7 @@ function checkedIcon(checkednumber) {
 
 
   $(check_ind).click(function () {
-    //もしチェックされていたらチェックされた値を表示する
+    //もしチェックされていたらチェックされたfalseの値を新しく代入
     if ($(check_ind).prop('checked')) {
       todoModel.checkLists[checkednumber] = true;
     } else {
