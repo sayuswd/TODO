@@ -1,3 +1,41 @@
+
+/*@media以外のところはすべてのサイズで詠み込まれます。*/
+@media screen and (min-width: 480px) and (max-width:768px) {
+/*テキスト入力部分の装飾*/
+.textinput_set {
+  width: 40%;
+  text-align: center;
+  position: relative;
+  padding: 50px;
+  padding-left: 5%;
+  margin-right: 30%;
+}
+
+/*入力欄の装飾*/
+.textinput_set input {
+  width: 200px;
+  height: 25px;
+  text-align: center;
+  position: relative;
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+
+/*Addボタンの装飾*/
+.textinput_set button {
+  position: relative;
+  border: solid 3px rgb(36, 58, 90);
+  color: rgb(105, 105, 105);
+  padding: 10px 25px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+}
+
+
 body {
   background-color: rgb(228, 225, 225);
 }
@@ -36,6 +74,7 @@ body {
   padding-bottom: .2em;
   border-bottom: 3px solid rgb(36, 58, 90);
 }
+
 /*textinput_setとinputlist_setの装飾*/
 .all_sections .setting_section {
   position: relative;
