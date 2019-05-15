@@ -18,13 +18,13 @@ function viewModel() {
 
   //格納した複数の要素の抜き出し
   for (let i = 0; i < inputaddvalue; i++) {
-    
+
     //classの調整部分
     if (todoModel.todoLists[i] != "") {
 
       let delete_code = 'd_button';
       delete_code += i;
-    //Htmlの表示部分の設定
+      //Htmlの表示部分の設定
       const deletebutton = '<input type="button" class="' + delete_code + '" value="Delete"/></div>';
       const htmlset = '<div class="allset"><input type="checkbox" class="set" name="check' + i + '" />' + todoModel.todoLists[i] + deletebutton;
 

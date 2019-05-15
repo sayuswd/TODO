@@ -1,40 +1,4 @@
-
-/*@media以外のところはすべてのサイズで詠み込まれます。*/
-@media screen and (min-width: 480px) and (max-width:768px) {
-/*テキスト入力部分の装飾*/
-.textinput_set {
-  width: 40%;
-  text-align: center;
-  position: relative;
-  padding: 50px;
-  padding-left: 5%;
-  margin-right: 30%;
-}
-
-/*入力欄の装飾*/
-.textinput_set input {
-  width: 200px;
-  height: 25px;
-  text-align: center;
-  position: relative;
-  border: solid 1px #ccc;
-  border-radius: 3px;
-  margin: 0 auto;
-}
-
-/*Addボタンの装飾*/
-.textinput_set button {
-  position: relative;
-  border: solid 3px rgb(36, 58, 90);
-  color: rgb(105, 105, 105);
-  padding: 10px 25px;
-  font-size: 1.2em;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-}
-
+/*すべてのサイズ*/
 
 body {
   background-color: rgb(228, 225, 225);
@@ -48,6 +12,7 @@ body {
   color: rgb(105, 105, 105);
   margin: 0 auto;
 }
+
 /*全体の装飾*/
 .all_sections {
   position: absolute;
@@ -203,4 +168,92 @@ body {
 
 .inputlist_set .allset input[type="button"]:hover {
   background-color: rgb(230, 145, 142);
+}
+
+
+/*@media以外のところはすべてのサイズで詠み込まれます。*/
+@media screen and (min-width: 250px) and (max-width:768px) {
+
+  /*タイトル部分の装飾*/
+  .all_sections .title {
+    width: 20%;
+    position: relative;
+    padding-left: 25%;
+  }
+
+  .all_sections .title h1 {
+    width: 50%;
+    height: 40px;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(228, 225, 225);
+    font-size: 30px;
+    color: rgb(105, 105, 105);
+    padding-bottom: .2em;
+    border-bottom: 3px solid rgb(36, 58, 90);
+  }
+
+  /*テキスト入力部分の装飾*/
+  .textinput_set {
+    width: 4%;
+    text-align: center;
+    position: relative;
+    padding: 50px;
+    padding-left: 15%;
+  }
+
+  /*入力欄の装飾*/
+  .textinput_set input {
+    width: 250px;
+    height: 25px;
+    text-align: center;
+    position: relative;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    margin: 0 auto;
+  }
+
+  /*Addボタンの装飾*/
+  .textinput_set button {
+    position: relative;
+    border: solid 3px rgb(36, 58, 90);
+    color: rgb(105, 105, 105);
+    padding: 6px 10px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  /*表示するテキストの装飾*/
+.inputlist_set .allset {
+  width: 100%;
+  position: relative;
+  letter-spacing: 20px;
+  font-size: 15px;
+  margin-top: 50px;
+  margin-bottom: 23px;
+  float: left;
+
+  padding-bottom: .2em;
+  border-bottom: 1px solid #ccc;
+}
+
+/*表示するテキストのDeleteButtonの装飾*/
+.inputlist_set .allset input[type="button"] {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  font-size: 5px;
+  overflow: hidden;
+  border: solid 1px rgb(36, 58, 90);
+  background-color: rgb(228, 225, 225);
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: .4s;
+  color: rgb(105, 105, 105);
+
+  float: right;
+}
+
 }
