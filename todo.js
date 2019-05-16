@@ -74,6 +74,7 @@ function deleteButtonSet(deletebuttonnum) {
   });
 }
 
+$(function(){
 //登録ボタンが押されたら追加
 $('.addbutton').click(function () {
   //入力した文字を取得
@@ -98,7 +99,7 @@ $('#textinput').keypress(function (e) {
     $('.addbutton').click();
   }
 });
-
+});
 
 //チェックボタンの値の取得
 function checkedIcon(checkednumber) {
